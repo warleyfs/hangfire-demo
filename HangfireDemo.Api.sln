@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireDemo.Api", "HangfireDemo.Api.csproj", "{ED3ED67F-6F56-4B45-B152-899C63C6893E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{593230AD-798D-434D-9E90-E1539EA8A328}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED3ED67F-6F56-4B45-B152-899C63C6893E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED3ED67F-6F56-4B45-B152-899C63C6893E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED3ED67F-6F56-4B45-B152-899C63C6893E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED3ED67F-6F56-4B45-B152-899C63C6893E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {523817AE-41CE-4718-87BE-980D28F46486}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,24 @@
+﻿services:
+  api:
+    image: warleyfs/hangfire-demo:1.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    links:
+      - mongo
+    networks:
+      - hangfire-network
+  mongo:
+    image: mongodb/mongodb-community-server:latest
+    environment:
+      MONGODB_INITDB_ROOT_USERNAME: root
+      MONGODB_INITDB_ROOT_PASSWORD: 123
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/MongoDB:/data/db
+    networks:
+      - hangfire-network
+networks:
+  hangfire-network:
+    driver: bridge
