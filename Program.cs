@@ -4,6 +4,7 @@ using Hangfire.Dashboard;
 using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
 using Hangfire.Mongo.Migration.Strategies.Backup;
+using HangfireDemo.Api.Filters;
 using HealthChecks.UI.Client;
 using HealthChecks.UI.Configuration;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -96,12 +97,4 @@ app.MapPost("/job", (ILogger<Program> logger, int jobCount, TimeSpan delay) =>
     return HttpStatusCode.Created;
 }).WithName("SubmitJob").WithOpenApi();
 
-app.Run();
-
-public class DashboardNoAuthorizationFilter : IDashboardAuthorizationFilter
-{
-    public bool Authorize(DashboardContext dashboardContext)
-    {
-        return true;
-    }
-}
+await app.RunAsync();
