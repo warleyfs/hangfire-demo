@@ -2,7 +2,7 @@ using MassTransit;
 
 namespace HangfireDemo.Api.RabbitMQ.Workers;
 
-public class MessageProducer(IBus bus)
+public class MessageProducer(IBus bus) : IProducer
 {
     public async Task PostAsync(Message message, CancellationToken stoppingToken)
     {

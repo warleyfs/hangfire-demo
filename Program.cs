@@ -5,8 +5,11 @@ using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
 using Hangfire.Mongo.Migration.Strategies.Backup;
 using HangfireDemo.Api.Filters;
+using HangfireDemo.Api.RabbitMQ;
+using HangfireDemo.Api.RabbitMQ.Workers;
 using HealthChecks.UI.Client;
 using HealthChecks.UI.Configuration;
+using MassTransit;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using MongoDB.Driver;
 
@@ -22,6 +25,15 @@ builder.Services.AddHealthChecksUI(opt =>
     opt.SetApiMaxActiveRequests(1); //api requests concurrency    
     opt.AddHealthCheckEndpoint("feedback api", "/healthz"); //map health check api    
 }).AddInMemoryStorage();
+builder.Services.AddMassTransit(busConfig =>
+{
+    busConfig.AddConsumer<MessageConsumer>();
+    busConfig.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.ConfigureEndpoints(context);
+    });
+});
+builder.Services.AddScoped<IProducer, MessageProducer>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
@@ -86,13 +98,20 @@ app.UseHealthChecksUI(delegate (Options options)
 if (app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 
-app.MapPost("/job", (ILogger<Program> logger, int jobCount, TimeSpan delay) =>
+app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, int jobCount, TimeSpan delay, CancellationToken stoppingToken = new ()) =>
 {
     logger.LogInformation($"Job {jobCount} started");
+    
     for (var i = 0; i < jobCount; i++)
     {
         var index = new Random().Next(queues.Length);
-        new BackgroundJobClient().Schedule(queues[index], () => Console.WriteLine("Background job triggered"), delay);
+        await producer!.PostAsync(new Message
+        {
+            Id = Guid.NewGuid(),
+            Queue = queues[index],
+            Content = $"Hello {Random.Shared.Next()}!",
+            Delay = delay
+        }, stoppingToken);
     }
     return HttpStatusCode.Created;
 }).WithName("SubmitJob").WithOpenApi();

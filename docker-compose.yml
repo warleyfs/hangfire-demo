@@ -7,9 +7,6 @@
       - ./nginx.conf:/etc/nginx/nginx.conf
     networks:
       - hangfire-network
-    links:
-      - api1
-      - api2
     depends_on:
       api1:
         condition: service_healthy
@@ -80,7 +77,7 @@
       - 15672:15672
     volumes:
       - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq/
     networks:
       - hangfire-network
     restart: unless-stopped

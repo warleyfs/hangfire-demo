@@ -1,3 +1,4 @@
+using Hangfire;
 using MassTransit;
 using Newtonsoft.Json;
 
@@ -8,6 +9,12 @@ public class MessageConsumer(ILogger<Message> logger) : IConsumer<Message>
     public Task Consume(ConsumeContext<Message> context)
     {
         logger.LogInformation($"Received Message: {JsonConvert.SerializeObject(context.Message)}");
+        
+        new BackgroundJobClient().Schedule(context.Message.Queue, 
+            () => Console.WriteLine(context.Message.Content), 
+            context.Message.Delay
+        );
+
         return Task.CompletedTask;
     }
 }
