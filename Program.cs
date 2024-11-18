@@ -109,7 +109,7 @@ app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, int jobC
         {
             Id = Guid.NewGuid(),
             Queue = queues[index],
-            Content = $"Hello {Random.Shared.Next()}!",
+            Content = $"Processador pela máquina {Environment.MachineName}-{Environment.GetEnvironmentVariable("SERVER_ID")}!",
             Delay = delay
         }, stoppingToken);
     }
