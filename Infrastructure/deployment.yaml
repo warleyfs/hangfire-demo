@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hangfire-demo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hangfire-demo
+  template:
+    metadata:
+      labels:
+        app: hangfire-demo
+    spec:
+      containers:
+        - name: hangfire-demo-api
+          image: warleyfs/hangfire-demo:1.0.22
+#          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

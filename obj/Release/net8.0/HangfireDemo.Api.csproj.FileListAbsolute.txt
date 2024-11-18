@@ -56,3 +56,4 @@
 /Users/warley/Git/Pocs/Hangfire/HangfireDemo.Api/obj/Release/net8.0/HangfireDemo.Api.pdb
 /Users/warley/Git/Pocs/Hangfire/HangfireDemo.Api/obj/Release/net8.0/HangfireDemo.Api.genruntimeconfig.cache
 /Users/warley/Git/Pocs/Hangfire/HangfireDemo.Api/obj/Release/net8.0/ref/HangfireDemo.Api.dll
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Api/obj/Release/net8.0/HangfireDemo.Api.sourcelink.json
