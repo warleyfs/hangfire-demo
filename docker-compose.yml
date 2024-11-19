@@ -17,8 +17,6 @@
     container_name: hangfire-api-1
     image: warleyfs/hangfire-demo-arm64:1.0.25
     tty: true
-    environment:
-      - SERVER_ID = 1
     build:
       context: .
       dockerfile: Dockerfile
@@ -39,8 +37,6 @@
     container_name: hangfire-api-2
     image: warleyfs/hangfire-demo-arm64:1.0.25
     tty: true
-    environment:
-      - SERVER_ID = 2
     build:
       context: .
       dockerfile: Dockerfile

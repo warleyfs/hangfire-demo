@@ -11,7 +11,7 @@ export default function() {
   const payload = JSON.stringify({
     jobCount: 1,
     delay: "00:05:00",
-    throwRandomly: true,
+    forceRetry: true,
   });
   const params = {
     headers: { 

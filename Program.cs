@@ -1,16 +1,17 @@
 using System.Net;
+using System.Net.Mime;
 using Hangfire;
-using Hangfire.Dashboard;
 using Hangfire.Mongo;
 using Hangfire.Mongo.Migration.Strategies;
 using Hangfire.Mongo.Migration.Strategies.Backup;
+using HangfireDemo.Api.DTOs;
 using HangfireDemo.Api.Filters;
 using HangfireDemo.Api.RabbitMQ;
 using HangfireDemo.Api.RabbitMQ.Workers;
-using HealthChecks.UI.Client;
-using HealthChecks.UI.Configuration;
 using MassTransit;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,19 +19,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
-builder.Services.AddHealthChecksUI(opt =>
-{
-    opt.SetEvaluationTimeInSeconds(10); //time in seconds between check    
-    opt.MaximumHistoryEntriesPerEndpoint(60); //maximum history of checks    
-    opt.SetApiMaxActiveRequests(1); //api requests concurrency    
-    opt.AddHealthCheckEndpoint("feedback api", "/healthz"); //map health check api    
-}).AddInMemoryStorage();
 builder.Services.AddMassTransit(busConfig =>
 {
     busConfig.AddConsumer<MessageConsumer>();
     busConfig.UsingRabbitMq((context, cfg) =>
     {
         cfg.ConfigureEndpoints(context);
+        cfg.UseMessageRetry(r => r.Interval(10, TimeSpan.FromSeconds(10)));
     });
 });
 builder.Services.AddScoped<IProducer, MessageProducer>();
@@ -61,7 +56,7 @@ builder.Services.AddHangfire(configuration =>
     })
 );
 
-var queuesCount = 20;
+var queuesCount = 4;
 var queues = new string[queuesCount];
 for (var i = 0; i < queuesCount; i++) queues[i] = $"queue-{i + 1}";
 
@@ -87,30 +82,48 @@ app.UseHangfireDashboard("/hangfire", new DashboardOptions
 app.MapHealthChecks("/healthz", new HealthCheckOptions()
 {
     Predicate = _ => true,
-    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-});
-
-app.UseHealthChecksUI(delegate (Options options) 
-{
-    options.UIPath = "/healthcheck-ui";
+    ResponseWriter = async (context, report) =>
+    {
+        var response = JsonConvert.SerializeObject(new
+        {
+            status = report.Status.ToString(),
+            currentTime = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"),
+            currentTimeZone = TimeZoneInfo.Local.DisplayName,
+            server = $"{Environment.MachineName}",
+            healthChecks = report.Entries.Select(e => new
+            {
+                e.Key, 
+                e.Value.Status, 
+                e.Value.Description, 
+                e.Value.Duration,
+                e.Value.Exception?.Message,
+                e.Value.Tags,
+                e.Value.Data
+            })
+        });
+        context.Response.ContentType = MediaTypeNames.Application.Json;
+        await context.Response.WriteAsync(response);
+    }
 });
 
 if (app.Environment.IsDevelopment())
     app.UseHttpsRedirection();
 
-app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, int jobCount, TimeSpan delay, CancellationToken stoppingToken = new ()) =>
+app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, [FromBody] SubmitJobRequest request, CancellationToken stoppingToken = new ()) =>
 {
-    logger.LogInformation($"Job {jobCount} started");
+    logger.LogInformation($"Job {request.JobCount} started");
+    var indexToThrow = request.ForceRetry ? new Random().Next(request.JobCount) : -1;
     
-    for (var i = 0; i < jobCount; i++)
+    for (var i = 0; i < request.JobCount; i++)
     {
         var index = new Random().Next(queues.Length);
         await producer!.PostAsync(new Message
         {
             Id = Guid.NewGuid(),
             Queue = queues[index],
-            Content = $"Processador pela máquina {Environment.MachineName}-{Environment.GetEnvironmentVariable("SERVER_ID")}!",
-            Delay = delay
+            Content = $"Processador pela máquina {Environment.MachineName}!",
+            Delay = request.Delay,
+            ForceRetry = i == indexToThrow,
         }, stoppingToken);
     }
     return HttpStatusCode.Created;
