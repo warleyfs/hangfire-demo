@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "HangfireDemo.Common/1.0.0": {
+        "runtime": {
+          "HangfireDemo.Common.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "HangfireDemo.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

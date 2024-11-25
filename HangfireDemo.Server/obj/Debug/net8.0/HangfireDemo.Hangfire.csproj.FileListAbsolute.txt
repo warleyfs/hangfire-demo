@@ -1,0 +1,15 @@
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/bin/Debug/net8.0/HangfireDemo.Hangfire
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/bin/Debug/net8.0/HangfireDemo.Hangfire.deps.json
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/bin/Debug/net8.0/HangfireDemo.Hangfire.runtimeconfig.json
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/bin/Debug/net8.0/HangfireDemo.Hangfire.dll
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/bin/Debug/net8.0/HangfireDemo.Hangfire.pdb
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.GeneratedMSBuildEditorConfig.editorconfig
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.AssemblyInfoInputs.cache
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.AssemblyInfo.cs
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.csproj.CoreCompileInputs.cache
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.sourcelink.json
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.dll
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/refint/HangfireDemo.Hangfire.dll
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.pdb
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/HangfireDemo.Hangfire.genruntimeconfig.cache
+/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Hangfire/obj/Debug/net8.0/ref/HangfireDemo.Hangfire.dll

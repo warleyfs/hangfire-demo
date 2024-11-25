@@ -1,72 +1,23 @@
 using System.Net;
 using System.Net.Mime;
-using Hangfire;
-using Hangfire.Mongo;
-using Hangfire.Mongo.Migration.Strategies;
-using Hangfire.Mongo.Migration.Strategies.Backup;
-using HangfireDemo.Api.DTOs;
-using HangfireDemo.Api.Filters;
+using HangfireDemo.Contracts.DTOs;
 using HangfireDemo.Api.RabbitMQ;
 using HangfireDemo.Api.RabbitMQ.Workers;
-using MassTransit;
+using HangfireDemo.Contracts.DTOs.Hangfire;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
-builder.Services.AddMassTransit(busConfig =>
-{
-    busConfig.AddConsumer<MessageConsumer>();
-    busConfig.UsingRabbitMq((context, cfg) =>
-    {
-        cfg.ConfigureEndpoints(context);
-        cfg.UseMessageRetry(r => r.Interval(10, TimeSpan.FromSeconds(10)));
-    });
-});
 builder.Services.AddScoped<IProducer, MessageProducer>();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Debug);
-
-var mongoUrlBuilder = new MongoUrlBuilder($"mongodb://{(builder.Environment.IsDevelopment() ? "localhost" : "mongo")}:27017/jobs");
-var mongoClient = new MongoClient(mongoUrlBuilder.ToMongoUrl());
-
-// Add Hangfire services. Hangfire.AspNetCore nuget required
-builder.Services.AddHangfire(configuration => 
-    configuration
-    .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
-    .UseSimpleAssemblyNameTypeSerializer()
-    .UseRecommendedSerializerSettings()
-    .UseMongoStorage(mongoClient, mongoUrlBuilder.DatabaseName, new MongoStorageOptions
-    {
-        CheckQueuedJobsStrategy = CheckQueuedJobsStrategy.Poll,
-        MigrationOptions = new MongoMigrationOptions
-        {
-            MigrationStrategy = new MigrateMongoMigrationStrategy(),
-            BackupStrategy = new CollectionMongoBackupStrategy()
-        },
-        Prefix = "hangfire.mongo",
-        CheckConnection = false
-    })
-);
-
-var queuesCount = 4;
-var queues = new string[queuesCount];
-for (var i = 0; i < queuesCount; i++) queues[i] = $"queue-{i + 1}";
-
-// Add the processing server as IHostedService
-builder.Services.AddHangfireServer(serverOptions =>
-{
-    serverOptions.SchedulePollingInterval = TimeSpan.FromMinutes(1);
-    serverOptions.ServerName = $"{Environment.MachineName}-{Random.Shared.Next()}";
-    serverOptions.Queues = queues;
-});
 
 var app = builder.Build();
 
@@ -74,10 +25,6 @@ app.Logger.LogInformation("Application started!");
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseHangfireDashboard("/hangfire", new DashboardOptions
-{
-    Authorization = [new DashboardNoAuthorizationFilter()]
-});
 
 app.MapHealthChecks("/healthz", new HealthCheckOptions()
 {
@@ -116,11 +63,11 @@ app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, [FromBod
     
     for (var i = 0; i < request.JobCount; i++)
     {
-        var index = new Random().Next(queues.Length);
+        var index = new Random().Next(JobEngineConfig.Queues.Length);
         await producer!.PostAsync(new Message
         {
             Id = Guid.NewGuid(),
-            Queue = queues[index],
+            Queue = JobEngineConfig.Queues[index],
             Content = $"Processador pela máquina {Environment.MachineName}!",
             Delay = request.Delay,
             ForceRetry = i == indexToThrow,
