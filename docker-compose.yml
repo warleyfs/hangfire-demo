@@ -1,57 +1,113 @@
 ﻿services:
-#  nginx:
-#    image: nginx:latest
-#    ports:
-#      - "80:80"
-#    volumes:
-#      - ./nginx.conf:/etc/nginx/nginx.conf
-#    networks:
-#      - hangfire-network
-#    depends_on:
-#      api1:
-#        condition: service_healthy
-#      api2:
-#        condition: service_healthy
-#  
-#  api1:
-#    container_name: hangfire-api-1
-#    image: warleyfs/hangfire-demo-arm64:1.0.25
-#    tty: true
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-Api
-#    ports:
-#      - "8081:8080"
-#    depends_on:
-#      - mongo
-#    networks:
-#      - hangfire-network
-#    healthcheck:
-#      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
-#      interval: 30s
-#      retries: 5
-#      start_period: 20s
-#      timeout: 10s
-#  
-#  api2:
-#    container_name: hangfire-api-2
-#    image: warleyfs/hangfire-demo-arm64:1.0.25
-#    tty: true
-#    build:
-#      context: .
-#      dockerfile: Dockerfile-Api
-#    ports:
-#      - "8082:8080"
-#    depends_on:
-#      - mongo
-#    networks:
-#      - hangfire-network
-#    healthcheck:
-#      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
-#      interval: 30s
-#      retries: 5
-#      start_period: 20s
-#      timeout: 10s
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - hangfire-network
+    depends_on:
+      api1:
+        condition: service_healthy
+      api2:
+        condition: service_healthy
+
+  api1:
+    container_name: hangfire-api-1
+    image: warleyfs/hangfire-api-arm64:1.0.0
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Api
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mongo
+    networks:
+      - hangfire-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+
+  api2:
+    container_name: hangfire-api-2
+    image: warleyfs/hangfire-api-arm64:1.0.0
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Api
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mongo
+    networks:
+      - hangfire-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+  
+  server:
+    container_name: hangfire-server
+    image: warleyfs/hangfire-server-arm64:1.0.0
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Server
+    depends_on:
+      - mongo
+    networks:
+      - hangfire-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+  
+  worker:
+    container_name: hangfire-worker
+    image: warleyfs/hangfire-worker-arm64:1.0.0
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Worker
+    depends_on:
+      - mongo
+    networks:
+      - hangfire-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+  
+  dashboard:
+    container_name: hangfire-dashboard
+    image: warleyfs/hangfire-dashboard-arm64:1.0.0
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile-Dashboard
+    ports:
+      - "8083:8080"
+    depends_on:
+      - mongo
+    networks:
+      - hangfire-network
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/healthz || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
   
   mongo:
     image: mongo
@@ -78,11 +134,7 @@
       - hangfire-network
     restart: unless-stopped
     
+
 networks:
   hangfire-network:
     driver: bridge
-#  hangfiredemo.dashboard:
-#    image: hangfiredemo.dashboard
-#    build:
-#      context: .
-#      dockerfile: HangfireDemo.Dashboard/Dockerfile

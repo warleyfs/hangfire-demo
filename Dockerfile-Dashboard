@@ -12,6 +12,7 @@ RUN dotnet restore "HangfireDemo.Dashboard/HangfireDemo.Dashboard.csproj"
 COPY . .
 WORKDIR "/src/HangfireDemo.Dashboard"
 RUN dotnet build "HangfireDemo.Dashboard.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN apt-get update && apt-get install -y wget telnet iputils-ping
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release

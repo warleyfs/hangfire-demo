@@ -1,6 +1,7 @@
+using HangfireDemo.Contracts.DTOs.RabbitMQ;
 using MassTransit;
 
-namespace HangfireDemo.Api.RabbitMQ.Workers;
+namespace HangfireDemo.Api.Workers.RabbitMQ;
 
 public class MessageProducer(IBus bus) : IProducer
 {

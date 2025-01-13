@@ -1,12 +1,12 @@
 using Hangfire;
-using HangfireDemo.Api.RabbitMQ;
+using HangfireDemo.Contracts.DTOs.RabbitMQ;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
 namespace HangfireDemo.Worker.RabbitMQ;
 
-public class MessageConsumer(ILogger<Message> logger) : IConsumer<Message>
+public class MessageConsumer(ILogger<Message> logger, IBackgroundJobClient jobClient) : IConsumer<Message>
 {
     public Task Consume(ConsumeContext<Message> context)
     {
@@ -20,7 +20,7 @@ public class MessageConsumer(ILogger<Message> logger) : IConsumer<Message>
             throw new ApplicationException(logMessage);
         }
 
-        new BackgroundJobClient().Schedule(context.Message.Queue, 
+        jobClient.Schedule(context.Message.Queue, 
             () => Console.WriteLine(context.Message.Content), 
             context.Message.Delay
         );

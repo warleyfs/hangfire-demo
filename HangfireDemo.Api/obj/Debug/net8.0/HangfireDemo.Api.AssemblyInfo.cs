@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HangfireDemo.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2eb2f47e1f4bc0aef205c37feb80d529828aabd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9e236d0321ca3b9cc3f7773a4b197a29f5ba08d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("HangfireDemo.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HangfireDemo.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

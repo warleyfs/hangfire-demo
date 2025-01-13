@@ -1,4 +1,6 @@
-namespace HangfireDemo.Api.RabbitMQ;
+using HangfireDemo.Contracts.DTOs.RabbitMQ;
+
+namespace HangfireDemo.Api.Workers;
 
 public interface IProducer
 {

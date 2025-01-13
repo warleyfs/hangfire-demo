@@ -1,9 +1,11 @@
 using System.Net;
 using System.Net.Mime;
 using HangfireDemo.Contracts.DTOs;
-using HangfireDemo.Api.RabbitMQ;
-using HangfireDemo.Api.RabbitMQ.Workers;
+using HangfireDemo.Api.Workers;
+using HangfireDemo.Api.Workers.RabbitMQ;
 using HangfireDemo.Contracts.DTOs.Hangfire;
+using HangfireDemo.Contracts.DTOs.RabbitMQ;
+using MassTransit;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -14,7 +16,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 builder.Services.AddScoped<IProducer, MessageProducer>();
-
+builder.Services.AddMassTransit(busConfigurator =>
+{
+    busConfigurator.SetKebabCaseEndpointNameFormatter();
+    busConfigurator.UsingRabbitMq((context, busFactoryConfigurator) =>
+    {
+        busFactoryConfigurator.Host("localhost", hostConfigurator =>
+        {
+            hostConfigurator.Username("guest");
+            hostConfigurator.Password("guest");
+        });
+    });
+});
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 builder.Logging.SetMinimumLevel(LogLevel.Debug);
@@ -68,11 +81,12 @@ app.MapPost("/job", async (ILogger<Program> logger, IProducer producer, [FromBod
         {
             Id = Guid.NewGuid(),
             Queue = JobEngineConfig.Queues[index],
-            Content = $"Processador pela máquina {Environment.MachineName}!",
+            Content = $"Processado pela máquina {Environment.MachineName}!",
             Delay = request.Delay,
             ForceRetry = i == indexToThrow,
         }, stoppingToken);
     }
+    
     return HttpStatusCode.Created;
 }).WithName("SubmitJob").WithOpenApi();
 

@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Dockerfile-Api = Dockerfile-Api
 		.dockerignore = .dockerignore
 		Dockerfile-Dashboard = Dockerfile-Dashboard
+		Dockerfile-Worker = Dockerfile-Worker
+		Dockerfile-Server = Dockerfile-Server
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangfireDemo.Worker", "HangfireDemo.Worker\HangfireDemo.Worker.csproj", "{A0F5FC5B-D23A-4101-A1DC-7F7D5C9704AE}"

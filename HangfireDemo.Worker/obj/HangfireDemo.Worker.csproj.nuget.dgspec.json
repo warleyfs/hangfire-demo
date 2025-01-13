@@ -13,7 +13,6 @@
         "packagesPath": "/Users/warley/.nuget/packages/",
         "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/obj/",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/warley/.nuget/NuGet/NuGet.Config"
         ],
@@ -68,7 +67,6 @@
         "packagesPath": "/Users/warley/.nuget/packages/",
         "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/obj/",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "/Users/warley/.nuget/NuGet/NuGet.Config"
         ],
@@ -103,6 +101,14 @@
               "target": "Package",
               "version": "[1.8.15, )"
             },
+            "Hangfire.Mongo": {
+              "target": "Package",
+              "version": "[1.10.9, )"
+            },
+            "Hangfire.NetCore": {
+              "target": "Package",
+              "version": "[1.8.15, )"
+            },
             "MassTransit.RabbitMQ": {
               "target": "Package",
               "version": "[8.2.3, )"
@@ -114,6 +120,10 @@
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.29.0, )"
             }
           },
           "imports": [

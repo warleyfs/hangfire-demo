@@ -1,4 +1,4 @@
-namespace HangfireDemo.Api.RabbitMQ;
+namespace HangfireDemo.Contracts.DTOs.RabbitMQ;
 
 public record Message
 {

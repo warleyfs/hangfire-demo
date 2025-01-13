@@ -1335,7 +1335,6 @@
       "packagesPath": "/Users/warley/.nuget/packages/",
       "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Dashboard/obj/",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
         "/Users/warley/.nuget/NuGet/NuGet.Config"
       ],

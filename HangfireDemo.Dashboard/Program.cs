@@ -19,21 +19,27 @@ public class Program
         builder.Logging.AddConsole();
         builder.Logging.SetMinimumLevel(LogLevel.Debug);
 
+        builder.Services.AddHangfire(configuration =>
+        {
+            configuration.UseMongoStorage(mongoClient, mongoUrlBuilder.DatabaseName, new MongoStorageOptions
+            {
+                CheckQueuedJobsStrategy = CheckQueuedJobsStrategy.Poll,
+                MigrationOptions = new MongoMigrationOptions
+                {
+                    MigrationStrategy = new MigrateMongoMigrationStrategy(),
+                    BackupStrategy = new CollectionMongoBackupStrategy()
+                },
+                Prefix = "hangfire.mongo",
+                CheckConnection = false
+            });
+        });
+        
         var app = builder.Build();
+        
         app.UseHangfireDashboard("/hangfire", new DashboardOptions
         {
             Authorization = [new DashboardNoAuthorizationFilter()]
-        }, new MongoStorage(mongoClient, mongoUrlBuilder.DatabaseName, new MongoStorageOptions
-        {
-            CheckQueuedJobsStrategy = CheckQueuedJobsStrategy.Poll,
-            MigrationOptions = new MongoMigrationOptions
-            {
-                MigrationStrategy = new MigrateMongoMigrationStrategy(),
-                BackupStrategy = new CollectionMongoBackupStrategy()
-            },
-            Prefix = "hangfire.mongo",
-            CheckConnection = false
-        }));
+        });
         
         await app.RunAsync();
     }

@@ -2783,7 +2783,6 @@
       "packagesPath": "/Users/warley/.nuget/packages/",
       "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Server/obj/",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
         "/Users/warley/.nuget/NuGet/NuGet.Config"
       ],
