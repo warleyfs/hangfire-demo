@@ -2,35 +2,6 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "AWSSDK.Core/3.7.100.14": {
-        "type": "package",
-        "compile": {
-          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/AWSSDK.Core.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
-      "AWSSDK.SecurityToken/3.7.100.14": {
-        "type": "package",
-        "dependencies": {
-          "AWSSDK.Core": "[3.7.100.14, 4.0.0)"
-        },
-        "compile": {
-          "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "DnsClient/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -47,7 +18,7 @@
           }
         }
       },
-      "Hangfire.Core/1.8.15": {
+      "Hangfire.Core/1.8.18": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.1"
@@ -107,27 +78,27 @@
           }
         }
       },
-      "Hangfire.Mongo/1.10.9": {
+      "Hangfire.Mongo/1.11.5": {
         "type": "package",
         "dependencies": {
-          "Hangfire.Core": "1.8.14",
-          "MongoDB.Driver": "2.29.0"
+          "Hangfire.Core": "1.8.18",
+          "MongoDB.Driver": "3.2.1"
         },
         "compile": {
-          "lib/netstandard2.0/Hangfire.Mongo.dll": {
+          "lib/netstandard2.1/Hangfire.Mongo.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.0/Hangfire.Mongo.dll": {
+          "lib/netstandard2.1/Hangfire.Mongo.dll": {
             "related": ".xml"
           }
         }
       },
-      "Hangfire.NetCore/1.8.15": {
+      "Hangfire.NetCore/1.8.18": {
         "type": "package",
         "dependencies": {
-          "Hangfire.Core": "[1.8.15]",
+          "Hangfire.Core": "[1.8.18]",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "3.0.0",
           "Microsoft.Extensions.Hosting.Abstractions": "3.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.0.0"
@@ -163,10 +134,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Abstractions/9.0.0": {
+      "Microsoft.Extensions.Configuration.Abstractions/9.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "9.0.0"
+          "Microsoft.Extensions.Primitives": "9.0.3"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll": {
@@ -182,10 +153,10 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/9.0.0": {
+      "Microsoft.Extensions.Configuration.Binder/9.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Abstractions": "9.0.0"
+          "Microsoft.Extensions.Configuration.Abstractions": "9.0.3"
         },
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Configuration.Binder.dll": {
@@ -708,7 +679,7 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "Microsoft.Extensions.Primitives/9.0.0": {
+      "Microsoft.Extensions.Primitives/9.0.3": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.Extensions.Primitives.dll": {
@@ -756,100 +727,42 @@
           }
         }
       },
-      "MongoDB.Bson/2.29.0": {
+      "MongoDB.Bson/3.2.1": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.5",
           "System.Runtime.CompilerServices.Unsafe": "5.0.0"
         },
         "compile": {
-          "lib/netstandard2.1/MongoDB.Bson.dll": {
+          "lib/net6.0/MongoDB.Bson.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.1/MongoDB.Bson.dll": {
+          "lib/net6.0/MongoDB.Bson.dll": {
             "related": ".xml"
           }
         }
       },
-      "MongoDB.Driver/2.29.0": {
+      "MongoDB.Driver/3.2.1": {
         "type": "package",
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "MongoDB.Bson": "2.29.0",
-          "MongoDB.Driver.Core": "2.29.0",
-          "MongoDB.Libmongocrypt": "1.12.0"
-        },
-        "compile": {
-          "lib/netstandard2.1/MongoDB.Driver.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/MongoDB.Driver.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "MongoDB.Driver.Core/2.29.0": {
-        "type": "package",
-        "dependencies": {
-          "AWSSDK.SecurityToken": "3.7.100.14",
           "DnsClient": "1.6.1",
           "Microsoft.Extensions.Logging.Abstractions": "2.0.0",
-          "MongoDB.Bson": "2.29.0",
-          "MongoDB.Libmongocrypt": "1.12.0",
+          "MongoDB.Bson": "3.2.1",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
           "System.Buffers": "4.5.1",
           "ZstdSharp.Port": "0.7.3"
         },
         "compile": {
-          "lib/netstandard2.1/MongoDB.Driver.Core.dll": {
+          "lib/net6.0/MongoDB.Driver.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.1/MongoDB.Driver.Core.dll": {
+          "lib/net6.0/MongoDB.Driver.dll": {
             "related": ".xml"
-          }
-        }
-      },
-      "MongoDB.Libmongocrypt/1.12.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.1/MongoDB.Libmongocrypt.dll": {
-            "related": ".pdb"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.1/MongoDB.Libmongocrypt.dll": {
-            "related": ".pdb"
-          }
-        },
-        "contentFiles": {
-          "contentFiles/any/any/_._": {
-            "buildAction": "None",
-            "codeLanguage": "any",
-            "copyToOutput": false
-          }
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "runtimeTargets": {
-          "runtimes/linux/native/libmongocrypt.so": {
-            "assetType": "native",
-            "rid": "linux"
-          },
-          "runtimes/osx/native/libmongocrypt.dylib": {
-            "assetType": "native",
-            "rid": "osx"
-          },
-          "runtimes/win/native/mongocrypt.dll": {
-            "assetType": "native",
-            "rid": "win"
           }
         }
       },
@@ -1094,58 +1007,6 @@
     }
   },
   "libraries": {
-    "AWSSDK.Core/3.7.100.14": {
-      "sha512": "gnEgxBlk4PFEfdPE8Lkf4+D16MZFYSaW7/o6Wwe5e035QWUkTJX0Dn4LfTCdV5QSEL/fOFxu+yCAm55eIIBgog==",
-      "type": "package",
-      "path": "awssdk.core/3.7.100.14",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "awssdk.core.3.7.100.14.nupkg.sha512",
-        "awssdk.core.nuspec",
-        "lib/net35/AWSSDK.Core.dll",
-        "lib/net35/AWSSDK.Core.pdb",
-        "lib/net35/AWSSDK.Core.xml",
-        "lib/net45/AWSSDK.Core.dll",
-        "lib/net45/AWSSDK.Core.pdb",
-        "lib/net45/AWSSDK.Core.xml",
-        "lib/netcoreapp3.1/AWSSDK.Core.dll",
-        "lib/netcoreapp3.1/AWSSDK.Core.pdb",
-        "lib/netcoreapp3.1/AWSSDK.Core.xml",
-        "lib/netstandard2.0/AWSSDK.Core.dll",
-        "lib/netstandard2.0/AWSSDK.Core.pdb",
-        "lib/netstandard2.0/AWSSDK.Core.xml",
-        "tools/account-management.ps1"
-      ]
-    },
-    "AWSSDK.SecurityToken/3.7.100.14": {
-      "sha512": "dGCVuVo0CFUKWW85W8YENO+aREf8sCBDjvGbnNvxJuNW4Ss+brEU9ltHhq2KfZze2VUNK1/wygbPG1bmbpyXEw==",
-      "type": "package",
-      "path": "awssdk.securitytoken/3.7.100.14",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "analyzers/dotnet/cs/AWSSDK.SecurityToken.CodeAnalysis.dll",
-        "awssdk.securitytoken.3.7.100.14.nupkg.sha512",
-        "awssdk.securitytoken.nuspec",
-        "lib/net35/AWSSDK.SecurityToken.dll",
-        "lib/net35/AWSSDK.SecurityToken.pdb",
-        "lib/net35/AWSSDK.SecurityToken.xml",
-        "lib/net45/AWSSDK.SecurityToken.dll",
-        "lib/net45/AWSSDK.SecurityToken.pdb",
-        "lib/net45/AWSSDK.SecurityToken.xml",
-        "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll",
-        "lib/netcoreapp3.1/AWSSDK.SecurityToken.pdb",
-        "lib/netcoreapp3.1/AWSSDK.SecurityToken.xml",
-        "lib/netstandard2.0/AWSSDK.SecurityToken.dll",
-        "lib/netstandard2.0/AWSSDK.SecurityToken.pdb",
-        "lib/netstandard2.0/AWSSDK.SecurityToken.xml",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    },
     "DnsClient/1.6.1": {
       "sha512": "4H/f2uYJOZ+YObZjpY9ABrKZI+JNw3uizp6oMzTXwDw6F+2qIPhpRl/1t68O/6e98+vqNiYGu+lswmwdYUy3gg==",
       "type": "package",
@@ -1170,10 +1031,10 @@
         "lib/netstandard2.1/DnsClient.xml"
       ]
     },
-    "Hangfire.Core/1.8.15": {
-      "sha512": "+w8gT6CFH4jicVEsJ8WlMRJMNV2MG52JNtvKoXPFHFs6nkDTND6iDeCjydyHgp+85lZPRXc+s9/vkxD2vbPrLg==",
+    "Hangfire.Core/1.8.18": {
+      "sha512": "oNAkV8QQoYg5+vM2M024NBk49EhTO2BmKDLuQaKNew23RpH9OUGtKDl1KldBdDJrD8TMFzjhWCArol3igd2i2w==",
       "type": "package",
-      "path": "hangfire.core/1.8.15",
+      "path": "hangfire.core/1.8.18",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1184,7 +1045,7 @@
         "LICENSE_STANDARD",
         "NOTICES",
         "README.md",
-        "hangfire.core.1.8.15.nupkg.sha512",
+        "hangfire.core.1.8.18.nupkg.sha512",
         "hangfire.core.nuspec",
         "icon.png",
         "lib/net451/Hangfire.Core.dll",
@@ -1253,24 +1114,26 @@
         "lib/netstandard2.0/zh/Hangfire.Core.resources.dll"
       ]
     },
-    "Hangfire.Mongo/1.10.9": {
-      "sha512": "rQP+j0AkdsEyEEauPGv5KZ8Fn9L0TQBXiHZ2fWWonkvoWkMJopfAH8mbq7tNO9y2zo4ZW7OctNcmpFfas2JL2g==",
+    "Hangfire.Mongo/1.11.5": {
+      "sha512": "b0HxUptdsw22vmzxRlaXqdeBXEhLEvVi5gj3fr+WCWANIebl0nTk62kilNJIES2vhLWuavV6DHpIK3fVuR62gg==",
       "type": "package",
-      "path": "hangfire.mongo/1.10.9",
+      "path": "hangfire.mongo/1.11.5",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "hangfire.mongo.1.10.9.nupkg.sha512",
+        "hangfire.mongo.1.11.5.nupkg.sha512",
         "hangfire.mongo.nuspec",
-        "lib/netstandard2.0/Hangfire.Mongo.dll",
-        "lib/netstandard2.0/Hangfire.Mongo.xml"
+        "lib/net472/Hangfire.Mongo.dll",
+        "lib/net472/Hangfire.Mongo.xml",
+        "lib/netstandard2.1/Hangfire.Mongo.dll",
+        "lib/netstandard2.1/Hangfire.Mongo.xml"
       ]
     },
-    "Hangfire.NetCore/1.8.15": {
-      "sha512": "HNACpklY1FGcsCr/xlPvmh5R5JqH2eEBxOp63Dwph6H6LdGWWqHoMpxjxkpYkZXM2mNpmk+j0Dk8lizadfnD+A==",
+    "Hangfire.NetCore/1.8.18": {
+      "sha512": "3KAV9AZ1nqQHC54qR4buNEEKRmQJfq+lODtZxUk5cdi68lV8+9K2f4H1/mIfDlPpgjPFjEfCobNoi2+TIpKySw==",
       "type": "package",
-      "path": "hangfire.netcore/1.8.15",
+      "path": "hangfire.netcore/1.8.18",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1280,7 +1143,7 @@
         "LICENSE_ROYALTYFREE",
         "LICENSE_STANDARD",
         "NOTICES",
-        "hangfire.netcore.1.8.15.nupkg.sha512",
+        "hangfire.netcore.1.8.18.nupkg.sha512",
         "hangfire.netcore.nuspec",
         "icon.png",
         "lib/net451/Hangfire.NetCore.dll",
@@ -1323,10 +1186,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Abstractions/9.0.0": {
-      "sha512": "lqvd7W3FGKUO1+ZoUEMaZ5XDJeWvjpy2/M/ptCGz3tXLD4HWVaSzjufsAsjemasBEg+2SxXVtYVvGt5r2nKDlg==",
+    "Microsoft.Extensions.Configuration.Abstractions/9.0.3": {
+      "sha512": "q5qlbm6GRUrle2ZZxy9aqS/wWoc+mRD3JeP6rcpiJTh5XcemYkplAcJKq8lU11ZfPom5lfbZZfnQvDqcUhqD5Q==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.abstractions/9.0.0",
+      "path": "microsoft.extensions.configuration.abstractions/9.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1346,15 +1209,15 @@
         "lib/net9.0/Microsoft.Extensions.Configuration.Abstractions.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.xml",
-        "microsoft.extensions.configuration.abstractions.9.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.abstractions.9.0.3.nupkg.sha512",
         "microsoft.extensions.configuration.abstractions.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Configuration.Binder/9.0.0": {
-      "sha512": "RiScL99DcyngY9zJA2ROrri7Br8tn5N4hP4YNvGdTN/bvg1A3dwvDOxHnNZ3Im7x2SJ5i4LkX1uPiR/MfSFBLQ==",
+    "Microsoft.Extensions.Configuration.Binder/9.0.3": {
+      "sha512": "ad82pYBUSQbd3WIboxsS1HzFdRuHKRa2CpYwie/o6dZAxUjt62yFwjoVdM7Iw2VO5fHV1rJwa7jJZBNZin0E7Q==",
       "type": "package",
-      "path": "microsoft.extensions.configuration.binder/9.0.0",
+      "path": "microsoft.extensions.configuration.binder/9.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -1385,7 +1248,7 @@
         "lib/net9.0/Microsoft.Extensions.Configuration.Binder.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Configuration.Binder.xml",
-        "microsoft.extensions.configuration.binder.9.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.binder.9.0.3.nupkg.sha512",
         "microsoft.extensions.configuration.binder.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2105,10 +1968,10 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "Microsoft.Extensions.Primitives/9.0.0": {
-      "sha512": "N3qEBzmLMYiASUlKxxFIISP4AiwuPTHF5uCh+2CWSwwzAJiIYx0kBJsS30cp1nvhSySFAVi30jecD307jV+8Kg==",
+    "Microsoft.Extensions.Primitives/9.0.3": {
+      "sha512": "yCCJHvBcRyqapMSNzP+kTc57Eaavq2cr5Tmuil6/XVnipQf5xmskxakSQ1enU6S4+fNg3sJ27WcInV64q24JsA==",
       "type": "package",
-      "path": "microsoft.extensions.primitives/9.0.0",
+      "path": "microsoft.extensions.primitives/9.0.3",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2128,7 +1991,7 @@
         "lib/net9.0/Microsoft.Extensions.Primitives.xml",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.dll",
         "lib/netstandard2.0/Microsoft.Extensions.Primitives.xml",
-        "microsoft.extensions.primitives.9.0.0.nupkg.sha512",
+        "microsoft.extensions.primitives.9.0.3.nupkg.sha512",
         "microsoft.extensions.primitives.nuspec",
         "useSharedDesignerContext.txt"
       ]
@@ -2195,96 +2058,42 @@
         "version.txt"
       ]
     },
-    "MongoDB.Bson/2.29.0": {
-      "sha512": "wz8UtxdjnknHRJuMatTRr2QMlh7k9457BRfaDQxl+OiKV01vMzm1K0/jTvQJqORV5eba6HrCAzMJzj7nnt5cag==",
+    "MongoDB.Bson/3.2.1": {
+      "sha512": "45w3BJU3sVejUaOVLAxQiEdWkNH+iyxMs3lDh4l2lUFbOb/s4uB++UoQY/3TCQrupQyx1/y7yzC5I76o4h7fFw==",
       "type": "package",
-      "path": "mongodb.bson/2.29.0",
+      "path": "mongodb.bson/3.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "lib/net472/MongoDB.Bson.dll",
         "lib/net472/MongoDB.Bson.xml",
-        "lib/netstandard2.0/MongoDB.Bson.dll",
-        "lib/netstandard2.0/MongoDB.Bson.xml",
+        "lib/net6.0/MongoDB.Bson.dll",
+        "lib/net6.0/MongoDB.Bson.xml",
         "lib/netstandard2.1/MongoDB.Bson.dll",
         "lib/netstandard2.1/MongoDB.Bson.xml",
-        "mongodb.bson.2.29.0.nupkg.sha512",
+        "mongodb.bson.3.2.1.nupkg.sha512",
         "mongodb.bson.nuspec",
         "packageIcon.png"
       ]
     },
-    "MongoDB.Driver/2.29.0": {
-      "sha512": "1IfTnHX8G2SsXIHDz80OVSmcdL95vzzWXGGucR45k7+TUOcWVhiqYcc13ckRXl4NVxn4UTRrrKl+92xvjwWrRA==",
+    "MongoDB.Driver/3.2.1": {
+      "sha512": "ynT4Mc0ilT+DSQBbobfORqCWqm5UdHIX3Nc59oQH3XbPi43jKiqf7SK8NLBmQsB6RJBJPR+WdIeNLtzyLj3U3g==",
       "type": "package",
-      "path": "mongodb.driver/2.29.0",
+      "path": "mongodb.driver/3.2.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "lib/net472/MongoDB.Driver.dll",
         "lib/net472/MongoDB.Driver.xml",
-        "lib/netstandard2.0/MongoDB.Driver.dll",
-        "lib/netstandard2.0/MongoDB.Driver.xml",
+        "lib/net6.0/MongoDB.Driver.dll",
+        "lib/net6.0/MongoDB.Driver.xml",
         "lib/netstandard2.1/MongoDB.Driver.dll",
         "lib/netstandard2.1/MongoDB.Driver.xml",
-        "mongodb.driver.2.29.0.nupkg.sha512",
+        "mongodb.driver.3.2.1.nupkg.sha512",
         "mongodb.driver.nuspec",
         "packageIcon.png"
-      ]
-    },
-    "MongoDB.Driver.Core/2.29.0": {
-      "sha512": "3M7gdmuLEay4Wc/q4zm/oA5KT4E62SsRBiq3prpT3tGEPkfstr3N3fYRbzYNu8TJgeyS0q5OPe4zI4yi6/GemQ==",
-      "type": "package",
-      "path": "mongodb.driver.core/2.29.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "THIRD-PARTY-NOTICES",
-        "lib/net472/MongoDB.Driver.Core.dll",
-        "lib/net472/MongoDB.Driver.Core.xml",
-        "lib/netstandard2.0/MongoDB.Driver.Core.dll",
-        "lib/netstandard2.0/MongoDB.Driver.Core.xml",
-        "lib/netstandard2.1/MongoDB.Driver.Core.dll",
-        "lib/netstandard2.1/MongoDB.Driver.Core.xml",
-        "mongodb.driver.core.2.29.0.nupkg.sha512",
-        "mongodb.driver.core.nuspec",
-        "packageIcon.png"
-      ]
-    },
-    "MongoDB.Libmongocrypt/1.12.0": {
-      "sha512": "B1X51jrtNacKvxKoaqWeknYeJfQS5aWf6BmVLT5JZerz3AUXFzv8edPskJYqBc3kLy1J2PWzMqqsnyb9g8FtcA==",
-      "type": "package",
-      "path": "mongodb.libmongocrypt/1.12.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License.txt",
-        "build/MongoDB.Libmongocrypt.targets",
-        "content/libmongocrypt.dylib",
-        "content/libmongocrypt.so",
-        "content/mongocrypt.dll",
-        "contentFiles/any/net472/libmongocrypt.dylib",
-        "contentFiles/any/net472/libmongocrypt.so",
-        "contentFiles/any/net472/mongocrypt.dll",
-        "contentFiles/any/netstandard2.0/libmongocrypt.dylib",
-        "contentFiles/any/netstandard2.0/libmongocrypt.so",
-        "contentFiles/any/netstandard2.0/mongocrypt.dll",
-        "contentFiles/any/netstandard2.1/libmongocrypt.dylib",
-        "contentFiles/any/netstandard2.1/libmongocrypt.so",
-        "contentFiles/any/netstandard2.1/mongocrypt.dll",
-        "lib/net472/MongoDB.Libmongocrypt.dll",
-        "lib/net472/MongoDB.Libmongocrypt.pdb",
-        "lib/netstandard2.0/MongoDB.Libmongocrypt.dll",
-        "lib/netstandard2.0/MongoDB.Libmongocrypt.pdb",
-        "lib/netstandard2.1/MongoDB.Libmongocrypt.dll",
-        "lib/netstandard2.1/MongoDB.Libmongocrypt.pdb",
-        "mongodb.libmongocrypt.1.12.0.nupkg.sha512",
-        "mongodb.libmongocrypt.nuspec",
-        "runtimes/linux/native/libmongocrypt.so",
-        "runtimes/osx/native/libmongocrypt.dylib",
-        "runtimes/win/native/mongocrypt.dll"
       ]
     },
     "Newtonsoft.Json/11.0.1": {
@@ -2764,10 +2573,10 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Hangfire.Mongo >= 1.10.9",
-      "Hangfire.NetCore >= 1.8.15",
+      "Hangfire.Mongo >= 1.11.5",
+      "Hangfire.NetCore >= 1.8.18",
       "HangfireDemo.Common >= 1.0.0",
-      "Microsoft.Extensions.Configuration.Binder >= 9.0.0",
+      "Microsoft.Extensions.Configuration.Binder >= 9.0.3",
       "Microsoft.Extensions.Hosting >= 9.0.0"
     ]
   },
@@ -2777,11 +2586,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Server/HangfireDemo.Server.csproj",
+      "projectUniqueName": "/Users/warley/Source/hangfire-demo/HangfireDemo.Server/HangfireDemo.Server.csproj",
       "projectName": "HangfireDemo.Server",
-      "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Server/HangfireDemo.Server.csproj",
+      "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Server/HangfireDemo.Server.csproj",
       "packagesPath": "/Users/warley/.nuget/packages/",
-      "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Server/obj/",
+      "outputPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/warley/.nuget/NuGet/NuGet.Config"
@@ -2790,15 +2599,14 @@
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj": {
-              "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj"
+            "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj": {
+              "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj"
             }
           }
         }
@@ -2807,6 +2615,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2815,15 +2628,15 @@
         "dependencies": {
           "Hangfire.Mongo": {
             "target": "Package",
-            "version": "[1.10.9, )"
+            "version": "[1.11.5, )"
           },
           "Hangfire.NetCore": {
             "target": "Package",
-            "version": "[1.8.15, )"
+            "version": "[1.8.18, )"
           },
           "Microsoft.Extensions.Configuration.Binder": {
             "target": "Package",
-            "version": "[9.0.0, )"
+            "version": "[9.0.3, )"
           },
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
@@ -2846,7 +2659,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

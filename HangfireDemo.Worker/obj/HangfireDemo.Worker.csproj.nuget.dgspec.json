@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/HangfireDemo.Worker.csproj": {}
+    "/Users/warley/Source/hangfire-demo/HangfireDemo.Worker/HangfireDemo.Worker.csproj": {}
   },
   "projects": {
-    "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj": {
+    "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj",
+        "projectUniqueName": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj",
         "projectName": "HangfireDemo.Common",
-        "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj",
+        "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj",
         "packagesPath": "/Users/warley/.nuget/packages/",
-        "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/obj/",
+        "outputPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/warley/.nuget/NuGet/NuGet.Config"
@@ -20,7 +20,6 @@
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -33,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -54,18 +58,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/HangfireDemo.Worker.csproj": {
+    "/Users/warley/Source/hangfire-demo/HangfireDemo.Worker/HangfireDemo.Worker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/HangfireDemo.Worker.csproj",
+        "projectUniqueName": "/Users/warley/Source/hangfire-demo/HangfireDemo.Worker/HangfireDemo.Worker.csproj",
         "projectName": "HangfireDemo.Worker",
-        "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/HangfireDemo.Worker.csproj",
+        "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Worker/HangfireDemo.Worker.csproj",
         "packagesPath": "/Users/warley/.nuget/packages/",
-        "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Worker/obj/",
+        "outputPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Worker/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/warley/.nuget/NuGet/NuGet.Config"
@@ -74,15 +78,14 @@
           "net8.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj": {
-                "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj"
+              "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj": {
+                "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj"
               }
             }
           }
@@ -91,6 +94,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -99,23 +107,23 @@
           "dependencies": {
             "Hangfire.Core": {
               "target": "Package",
-              "version": "[1.8.15, )"
+              "version": "[1.8.18, )"
             },
             "Hangfire.Mongo": {
               "target": "Package",
-              "version": "[1.10.9, )"
+              "version": "[1.11.5, )"
             },
             "Hangfire.NetCore": {
               "target": "Package",
-              "version": "[1.8.15, )"
+              "version": "[1.8.18, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[8.2.3, )"
+              "version": "[8.4.0, )"
             },
             "Microsoft.Extensions.Configuration.Binder": {
               "target": "Package",
-              "version": "[9.0.0, )"
+              "version": "[9.0.3, )"
             },
             "Microsoft.Extensions.Hosting": {
               "target": "Package",
@@ -123,7 +131,7 @@
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.29.0, )"
+              "version": "[3.3.0, )"
             }
           },
           "imports": [
@@ -142,7 +150,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

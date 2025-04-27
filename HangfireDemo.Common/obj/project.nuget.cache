@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kaMvNAvkYo0=",
+  "dgSpecHash": "QPe3dsvxZxw=",
   "success": true,
-  "projectFilePath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj",
+  "projectFilePath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

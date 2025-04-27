@@ -24,6 +24,7 @@
       - "8081:8080"
     depends_on:
       - mongo
+      - rabbitmq
     networks:
       - hangfire-network
     healthcheck:
@@ -44,6 +45,7 @@
       - "8082:8080"
     depends_on:
       - mongo
+      - rabbitmq
     networks:
       - hangfire-network
     healthcheck:
@@ -80,6 +82,7 @@
       dockerfile: Dockerfile-Worker
     depends_on:
       - mongo
+      - rabbitmq
     networks:
       - hangfire-network
     healthcheck:
@@ -134,7 +137,6 @@
       - hangfire-network
     restart: unless-stopped
     
-
 networks:
   hangfire-network:
     driver: bridge

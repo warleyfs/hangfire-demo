@@ -13,8 +13,6 @@
     <SourceRoot Include="/Users/warley/.nuget/packages/" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/warley/.nuget/packages/awssdk.core/3.7.100.14</PkgAWSSDK_Core>
-    <PkgAWSSDK_SecurityToken Condition=" '$(PkgAWSSDK_SecurityToken)' == '' ">/Users/warley/.nuget/packages/awssdk.securitytoken/3.7.100.14</PkgAWSSDK_SecurityToken>
-    <PkgHangfire_SqlServer Condition=" '$(PkgHangfire_SqlServer)' == '' ">/Users/warley/.nuget/packages/hangfire.sqlserver/1.8.15</PkgHangfire_SqlServer>
+    <PkgHangfire_SqlServer Condition=" '$(PkgHangfire_SqlServer)' == '' ">/Users/warley/.nuget/packages/hangfire.sqlserver/1.8.18</PkgHangfire_SqlServer>
   </PropertyGroup>
 </Project>

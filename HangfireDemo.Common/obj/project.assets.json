@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj",
+      "projectUniqueName": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj",
       "projectName": "HangfireDemo.Common",
-      "projectPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/HangfireDemo.Common.csproj",
+      "projectPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/HangfireDemo.Common.csproj",
       "packagesPath": "/Users/warley/.nuget/packages/",
-      "outputPath": "/Users/warley/Git/Pocs/Hangfire/HangfireDemo.Common/obj/",
+      "outputPath": "/Users/warley/Source/hangfire-demo/HangfireDemo.Common/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/warley/.nuget/NuGet/NuGet.Config"
@@ -26,7 +26,6 @@
         "net8.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -39,6 +38,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -60,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.407/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -8,9 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Hangfire" Version="1.8.15" />
-      <PackageReference Include="Hangfire.Mongo" Version="1.10.9" />
-      <PackageReference Include="MongoDB.Driver" Version="2.29.0" />
+      <PackageReference Include="Hangfire" Version="1.8.18" />
+      <PackageReference Include="Hangfire.Mongo" Version="1.11.5" />
+      <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
     </ItemGroup>
 
 </Project>
